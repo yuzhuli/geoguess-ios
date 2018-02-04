@@ -34,14 +34,6 @@ class StreetViewController: UIViewController, GMSMapViewDelegate {
     setUpGuessButton()
   }
     
-  override func loadView() {
-    let panoView = GMSPanoramaView(frame: .zero)
-    self.view = panoView
-    panoView.moveNearCoordinate(CLLocationCoordinate2D(
-      latitude: initialGeoLocation.latitude,
-      longitude: initialGeoLocation.longitude))
-  }
-  
   private func setUpGuessButton() {
     guessButton = UIButton(frame: CGRect(
       x: view.frame.size.width - 50,
