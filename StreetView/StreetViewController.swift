@@ -25,7 +25,13 @@ class StreetViewController: UIViewController, GMSMapViewDelegate {
   
   override func viewDidLoad() {
     super.viewDidLoad()
-    // Do any additional setup after loading the view, typically from a nib.
+  
+    let panoView = GMSPanoramaView(frame: self.view.frame)
+    view.addSubview(panoView)
+    panoView.moveNearCoordinate(CLLocationCoordinate2D(
+      latitude: initialGeoLocation.latitude,
+      longitude: initialGeoLocation.longitude))
+    setUpGuessButton()
   }
     
   override func loadView() {
@@ -35,6 +41,28 @@ class StreetViewController: UIViewController, GMSMapViewDelegate {
       latitude: initialGeoLocation.latitude,
       longitude: initialGeoLocation.longitude))
   }
+  
+  private func setUpGuessButton() {
+    guessButton = UIButton(frame: CGRect(
+      x: view.frame.size.width - 50,
+      y: view.frame.size.height - 50,
+      width: 50,
+      height: 50))
+    guessButton.backgroundColor = UIColor.red
+    guessButton.titleLabel?.text = "Guess"
+    guessButton.addTarget(
+      self,
+      action: #selector(StreetViewController.onGuessButtonPressed(_:)),
+      for: .touchUpInside)
+    view.addSubview(guessButton)
+    view.bringSubview(toFront: guessButton)
+  }
+  
+  @objc private func onGuessButtonPressed(_ sender: UIButton!) {
+  
+  }
+  
+  private var guessButton: UIButton!
   
   private let initialGeoLocation: GeoLocation
 }
