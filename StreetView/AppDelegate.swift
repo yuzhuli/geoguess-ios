@@ -22,7 +22,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         GMSPlacesClient.provideAPIKey("AIzaSyBMa8lKxFvmiXi2fpBYrCzHbxxj5tsyTe8")
         
         window = UIWindow(frame: UIScreen.main.bounds)
-        let homeViewController = StreetViewController()
+        let homeViewController = StreetViewController(initialGeoLocation: GeoUtils.randomSFLocation())
         homeViewController.view.backgroundColor = UIColor.blue
         window!.rootViewController = homeViewController
         window!.makeKeyAndVisible()
