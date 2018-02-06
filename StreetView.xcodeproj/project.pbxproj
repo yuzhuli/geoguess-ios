@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		48A14984C1FC218263FA8BF4 /* Pods_StreetView.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BA2478B1E7EDFF4862CAF40E /* Pods_StreetView.framework */; };
+		D8BFE47C202990DD003B4FA6 /* Challenge.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8BFE47B202990DD003B4FA6 /* Challenge.swift */; };
 		FA17097A2026C7C500CD3957 /* StreetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA1709792026C7C500CD3957 /* StreetViewController.swift */; };
 		FA17097D2026F3BE00CD3957 /* GeoUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA17097C2026F3BE00CD3957 /* GeoUtils.swift */; };
 		FAEBCD1A2021AA6500FCF1C6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAEBCD192021AA6500FCF1C6 /* AppDelegate.swift */; };
@@ -17,6 +18,7 @@
 
 /* Begin PBXFileReference section */
 		BA2478B1E7EDFF4862CAF40E /* Pods_StreetView.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_StreetView.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		D8BFE47B202990DD003B4FA6 /* Challenge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Challenge.swift; sourceTree = "<group>"; };
 		F0EA1EA8401B405E0AA0DB71 /* Pods-StreetView.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StreetView.debug.xcconfig"; path = "Pods/Target Support Files/Pods-StreetView/Pods-StreetView.debug.xcconfig"; sourceTree = "<group>"; };
 		F16B2B29DC0BC942B64B63ED /* Pods-StreetView.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StreetView.release.xcconfig"; path = "Pods/Target Support Files/Pods-StreetView/Pods-StreetView.release.xcconfig"; sourceTree = "<group>"; };
 		FA1709792026C7C500CD3957 /* StreetViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StreetViewController.swift; sourceTree = "<group>"; };
@@ -57,6 +59,14 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		D8BFE47A202990C7003B4FA6 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				D8BFE47B202990DD003B4FA6 /* Challenge.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
 		FA17097B2026F3A300CD3957 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
@@ -86,6 +96,7 @@
 		FAEBCD182021AA6500FCF1C6 /* StreetView */ = {
 			isa = PBXGroup;
 			children = (
+				D8BFE47A202990C7003B4FA6 /* Models */,
 				FA17097B2026F3A300CD3957 /* Utils */,
 				FAEBCD192021AA6500FCF1C6 /* AppDelegate.swift */,
 				FAEBCD1B2021AA6500FCF1C6 /* MapViewController.swift */,
@@ -229,6 +240,7 @@
 				FA17097D2026F3BE00CD3957 /* GeoUtils.swift in Sources */,
 				FAEBCD1C2021AA6500FCF1C6 /* MapViewController.swift in Sources */,
 				FAEBCD1A2021AA6500FCF1C6 /* AppDelegate.swift in Sources */,
+				D8BFE47C202990DD003B4FA6 /* Challenge.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
