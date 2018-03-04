@@ -25,4 +25,8 @@ class ChallengeManager {
       description: "test description",
       rounds: [Round(initialGeoLocation: GeoUtils.randomSFLocation())])
   }()
+
+  static var shared: ChallengeManager = {
+    return ChallengeManager()
+  }()
 }

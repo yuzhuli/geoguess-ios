@@ -22,10 +22,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         GMSPlacesClient.provideAPIKey("AIzaSyBMa8lKxFvmiXi2fpBYrCzHbxxj5tsyTe8")
         
         window = UIWindow(frame: UIScreen.main.bounds)
-        let homeViewController = StreetViewController(initialGeoLocation: GeoUtils.randomSFLocation())
-        homeViewController.view.backgroundColor = UIColor.blue
-        window!.rootViewController = homeViewController
-        window!.makeKeyAndVisible()
+        let challenge = ChallengeManager.shared.singleTestingChallenge
+        let challengeCoordinator = ChallengeCoordinator(challenge: challenge, window: window)
+        challengeCoordinator.startFlow()
         return true
     }
 
