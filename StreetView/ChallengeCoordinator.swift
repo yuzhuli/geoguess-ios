@@ -23,6 +23,7 @@ final class ChallengeCoordinator {
     }
 
     let streetViewController = StreetViewController(initialGeoLocation: firstRound.initialGeoLocation)
+    streetViewController.delegate = self
     navigationController = UINavigationController(rootViewController: streetViewController)
     window.rootViewController = navigationController
     window.makeKeyAndVisible()
@@ -33,3 +34,9 @@ final class ChallengeCoordinator {
   private var navigationController: UINavigationController!
 }
 
+extension ChallengeCoordinator: StreetViewControllerDelegate {
+  func didPressGuessButton(viewController: StreetViewController) {
+    let mapViewController = MapViewController()
+    navigationController.pushViewController(mapViewController, animated: true)
+  }
+}

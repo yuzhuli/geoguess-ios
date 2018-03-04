@@ -11,7 +11,6 @@ import GoogleMaps
 import GooglePlaces
 
 class MapViewController: UIViewController {
-
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
@@ -36,7 +35,5 @@ class MapViewController: UIViewController {
         marker.snippet = "Australia"
         marker.map = mapView
     }
-
-
 }
 
