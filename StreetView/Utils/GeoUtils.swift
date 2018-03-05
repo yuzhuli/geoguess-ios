@@ -22,4 +22,6 @@ class GeoUtils {
     print(randomLongitude)
     return randomSFPlace
   }
+  
+  static let initialMapPosition = GeoLocation(latitude: 0.00, longitude: 180.00)
 }
