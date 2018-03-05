@@ -25,6 +25,19 @@ class MapViewController: UIViewController {
       zoom: 0.0)
     let mapView = GMSMapView.map(withFrame: CGRect.zero, camera: camera)
     view = mapView
+    mapView.delegate = self
   }
+  
+  private var marker: GMSMarker?
 }
 
+extension MapViewController: GMSMapViewDelegate {
+  func mapView(_ mapView: GMSMapView, didTapAt coordinate: CLLocationCoordinate2D) {
+    marker?.map = nil
+    
+    let newMarker = GMSMarker(position: coordinate)
+    newMarker.title = "Selected position"
+    newMarker.map = mapView
+    marker = newMarker
+  }
+}
