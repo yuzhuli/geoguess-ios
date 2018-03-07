@@ -86,27 +86,38 @@ class MapViewController: UIViewController {
     polyline.map = mapView
   }
   
+  private func removeButton(button: UIButton) {
+    button.removeFromSuperview()
+  }
+  
   @objc private func onConfirmButtonPressed(_ sender: UIButton!) {
+    isCoordinateConfirmed = true
+    navigationItem.hidesBackButton = true
     addExpectedMarker()
     drawPolyline()
+    removeButton(button: cancelButton)
+    removeButton(button: confirmButton)
   }
   
   @objc private func onCancelButtonPressed(_ sender: UIButton!) {
     marker?.map = nil
-    cancelButton.removeFromSuperview()
-    confirmButton.removeFromSuperview()
+    removeButton(button: cancelButton)
+    removeButton(button: confirmButton)
   }
   
   private let expectedCoordinate: CLLocationCoordinate2D
   private var mapView: GMSMapView!
   private var marker: GMSMarker?
   private var userSelectedCoordinate: CLLocationCoordinate2D!
+  private var isCoordinateConfirmed: Bool = false
   private var cancelButton: UIButton!
   private var confirmButton: UIButton!
 }
 
 extension MapViewController: GMSMapViewDelegate {
   func mapView(_ mapView: GMSMapView, didTapAt coordinate: CLLocationCoordinate2D) {
+    guard isCoordinateConfirmed == false else { return }
+    
     marker?.map = nil
     
     userSelectedCoordinate = coordinate
