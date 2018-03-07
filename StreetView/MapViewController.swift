@@ -11,6 +11,17 @@ import GoogleMaps
 import GooglePlaces
 
 class MapViewController: UIViewController {
+  
+  required init?(coder aDecoder: NSCoder) {
+    fatalError("init(coder:) has not been implemented")
+  }
+  
+  init(expectedCoordinate: CLLocationCoordinate2D) {
+    self.expectedCoordinate = expectedCoordinate
+    
+    super.init(nibName: nil, bundle: nil)
+  }
+  
   override func viewDidLoad() {
     super.viewDidLoad()
     // Do any additional setup after loading the view, typically from a nib.
@@ -23,22 +34,86 @@ class MapViewController: UIViewController {
       withLatitude: GeoUtils.initialMapPosition.latitude,
       longitude: GeoUtils.initialMapPosition.longitude,
       zoom: 0.0)
-    let mapView = GMSMapView.map(withFrame: CGRect.zero, camera: camera)
+    mapView = GMSMapView.map(withFrame: CGRect.zero, camera: camera)
     view = mapView
 
     mapView.delegate = self
   }
   
+  private func showConfirmButton() {
+    confirmButton = UIButton(frame: CGRect(
+      x: view.frame.size.width - 50,
+      y: view.frame.size.height - 50,
+      width: 50,
+      height: 50))
+    confirmButton.backgroundColor = UIColor.green
+    confirmButton.titleLabel?.text = "Confirm"
+    confirmButton.addTarget(
+      self,
+      action: #selector(MapViewController.onConfirmButtonPressed(_:)),
+      for: .touchUpInside)
+    view.addSubview(confirmButton)
+    view.bringSubview(toFront: confirmButton)
+  }
+  
+  private func showCancelButton() {
+    cancelButton = UIButton(frame: CGRect(
+      x: view.frame.size.width - 100,
+      y: view.frame.size.height - 50,
+      width: 50,
+      height: 50))
+    cancelButton.backgroundColor = UIColor.black
+    cancelButton.titleLabel?.text = "Cancel"
+    cancelButton.addTarget(
+      self,
+      action: #selector(MapViewController.onCancelButtonPressed(_:)),
+      for: .touchUpInside)
+    view.addSubview(cancelButton)
+    view.bringSubview(toFront: cancelButton)
+  }
+  
+  private func addExpectedMarker() {
+    let expectedMarker = GMSMarker(position: expectedCoordinate)
+    expectedMarker.title = "Expected position"
+    expectedMarker.map = mapView
+  }
+  
+  private func drawPolyline() {
+    let path = GMSMutablePath()
+    path.add(expectedCoordinate)
+    path.add(userSelectedCoordinate)
+    let polyline = GMSPolyline(path: path)
+    polyline.map = mapView
+  }
+  
+  @objc private func onConfirmButtonPressed(_ sender: UIButton!) {
+    addExpectedMarker()
+    drawPolyline()
+  }
+  
+  @objc private func onCancelButtonPressed(_ sender: UIButton!) {
+    marker?.map = nil
+    cancelButton.removeFromSuperview()
+    confirmButton.removeFromSuperview()
+  }
+  
+  private let expectedCoordinate: CLLocationCoordinate2D
+  private var mapView: GMSMapView!
   private var marker: GMSMarker?
+  private var userSelectedCoordinate: CLLocationCoordinate2D!
+  private var cancelButton: UIButton!
+  private var confirmButton: UIButton!
 }
 
 extension MapViewController: GMSMapViewDelegate {
   func mapView(_ mapView: GMSMapView, didTapAt coordinate: CLLocationCoordinate2D) {
     marker?.map = nil
     
-    let newMarker = GMSMarker(position: coordinate)
-    newMarker.title = "Selected position"
-    newMarker.map = mapView
-    marker = newMarker
+    userSelectedCoordinate = coordinate
+    marker = GMSMarker(position: coordinate)
+    marker?.title = "Selected position"
+    marker?.map = mapView
+    showConfirmButton()
+    showCancelButton()
   }
 }

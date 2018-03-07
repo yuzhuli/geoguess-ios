@@ -7,21 +7,15 @@
 //
 
 import Foundation
-
-struct GeoLocation {
-  let latitude: Double
-  let longitude: Double
-}
+import GoogleMaps
 
 class GeoUtils {
-  static func randomSFLocation() -> GeoLocation {
+  static func randomSFLocation() -> CLLocationCoordinate2D {
     let randomLatitude = Double(37.73) + Double(arc4random_uniform(5)) / 100
     let randomLongitude = Double(-122.39) - Double(arc4random_uniform(9)) / 100
-    let randomSFPlace = GeoLocation(latitude: randomLatitude, longitude: randomLongitude)
-    print(randomLatitude)
-    print(randomLongitude)
+    let randomSFPlace = CLLocationCoordinate2D(latitude: randomLatitude, longitude: randomLongitude)
     return randomSFPlace
   }
   
-  static let initialMapPosition = GeoLocation(latitude: 0.00, longitude: 180.00)
+  static let initialMapPosition = CLLocationCoordinate2D(latitude: 0.00, longitude: 180.00)
 }

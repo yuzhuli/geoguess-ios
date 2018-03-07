@@ -36,7 +36,7 @@ final class ChallengeCoordinator {
 
 extension ChallengeCoordinator: StreetViewControllerDelegate {
   func didPressGuessButton(viewController: StreetViewController) {
-    let mapViewController = MapViewController()
+    let mapViewController = MapViewController(expectedCoordinate: challenge.rounds.first!.initialGeoLocation)
     navigationController.pushViewController(mapViewController, animated: true)
   }
 }

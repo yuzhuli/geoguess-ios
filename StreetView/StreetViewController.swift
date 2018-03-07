@@ -18,7 +18,7 @@ protocol StreetViewControllerDelegate {
 
 class StreetViewController: UIViewController, GMSMapViewDelegate {
   
-  init(initialGeoLocation: GeoLocation) {
+  init(initialGeoLocation: CLLocationCoordinate2D) {
     self.initialGeoLocation = initialGeoLocation
     super.init(nibName: nil, bundle: nil)
   }
@@ -62,6 +62,6 @@ class StreetViewController: UIViewController, GMSMapViewDelegate {
   
   private var guessButton: UIButton!
   
-  private let initialGeoLocation: GeoLocation
+  private let initialGeoLocation: CLLocationCoordinate2D
 }
 

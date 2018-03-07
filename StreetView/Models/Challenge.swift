@@ -7,9 +7,10 @@
 //
 
 import Foundation
+import GoogleMaps
 
 struct Round {
-  let initialGeoLocation: GeoLocation
+  let initialGeoLocation: CLLocationCoordinate2D
 }
 
 struct Challenge {
