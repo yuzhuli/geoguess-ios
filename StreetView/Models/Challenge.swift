@@ -26,6 +26,13 @@ class ChallengeManager {
       description: "test description",
       rounds: [Round(initialGeoLocation: GeoUtils.randomSFLocation())])
   }()
+  
+  lazy var doubleTestingChallenge: Challenge = {
+    return Challenge(
+      name: "double testing challenge",
+      description: "test description",
+      rounds: [Round(initialGeoLocation: GeoUtils.randomSFLocation()), Round(initialGeoLocation: GeoUtils.randomSFLocation())])
+  }()
 
   static var shared: ChallengeManager = {
     return ChallengeManager()

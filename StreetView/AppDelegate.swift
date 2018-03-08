@@ -22,7 +22,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         GMSPlacesClient.provideAPIKey("AIzaSyBMa8lKxFvmiXi2fpBYrCzHbxxj5tsyTe8")
         
         window = UIWindow(frame: UIScreen.main.bounds)
-        let challenge = ChallengeManager.shared.singleTestingChallenge
+        let challenge = ChallengeManager.shared.doubleTestingChallenge
         let challengeCoordinator = ChallengeCoordinator(challenge: challenge, window: window)
         challengeCoordinator.startFlow()
         return true

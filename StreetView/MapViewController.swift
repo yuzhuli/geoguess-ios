@@ -10,6 +10,10 @@ import UIKit
 import GoogleMaps
 import GooglePlaces
 
+protocol MapViewControllerDelegate {
+  func didPressNextRoundButton(viewController: MapViewController)
+}
+
 class MapViewController: UIViewController {
   
   required init?(coder aDecoder: NSCoder) {
@@ -40,6 +44,8 @@ class MapViewController: UIViewController {
     mapView.delegate = self
   }
   
+  var delegate: MapViewControllerDelegate?
+  
   private func showConfirmButton() {
     confirmButton = UIButton(frame: CGRect(
       x: view.frame.size.width - 50,
@@ -47,7 +53,7 @@ class MapViewController: UIViewController {
       width: 50,
       height: 50))
     confirmButton.backgroundColor = UIColor.green
-    confirmButton.titleLabel?.text = "Confirm"
+    confirmButton.setTitle("Confirm", for: .normal)
     confirmButton.addTarget(
       self,
       action: #selector(MapViewController.onConfirmButtonPressed(_:)),
@@ -63,13 +69,29 @@ class MapViewController: UIViewController {
       width: 50,
       height: 50))
     cancelButton.backgroundColor = UIColor.black
-    cancelButton.titleLabel?.text = "Cancel"
+    cancelButton.setTitle("Cancel", for: .normal)
     cancelButton.addTarget(
       self,
       action: #selector(MapViewController.onCancelButtonPressed(_:)),
       for: .touchUpInside)
     view.addSubview(cancelButton)
     view.bringSubview(toFront: cancelButton)
+  }
+  
+  private func showNextRoundButton() {
+    nextRoundButton = UIButton(frame: CGRect(
+      x: 0,
+      y: view.frame.size.height - 50,
+      width: 50,
+      height: 50))
+    nextRoundButton.setTitle("Next Round", for: .normal)
+    nextRoundButton.backgroundColor = UIColor.blue
+    nextRoundButton.addTarget(
+      self,
+      action: #selector(MapViewController.onNextRoundButtonPressed(_:)),
+      for: .touchUpInside)
+    view.addSubview(nextRoundButton)
+    view.bringSubview(toFront: nextRoundButton)
   }
   
   private func addExpectedMarker() {
@@ -97,12 +119,17 @@ class MapViewController: UIViewController {
     drawPolyline()
     removeButton(button: cancelButton)
     removeButton(button: confirmButton)
+    showNextRoundButton()
   }
   
   @objc private func onCancelButtonPressed(_ sender: UIButton!) {
     marker?.map = nil
     removeButton(button: cancelButton)
     removeButton(button: confirmButton)
+  }
+  
+  @objc private func onNextRoundButtonPressed(_ sender: UIButton!) {
+    delegate?.didPressNextRoundButton(viewController: self)
   }
   
   private let expectedCoordinate: CLLocationCoordinate2D
@@ -112,6 +139,7 @@ class MapViewController: UIViewController {
   private var isCoordinateConfirmed: Bool = false
   private var cancelButton: UIButton!
   private var confirmButton: UIButton!
+  private var nextRoundButton: UIButton!
 }
 
 extension MapViewController: GMSMapViewDelegate {

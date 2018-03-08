@@ -47,7 +47,7 @@ class StreetViewController: UIViewController, GMSMapViewDelegate {
       width: 50,
       height: 50))
     guessButton.backgroundColor = UIColor.red
-    guessButton.titleLabel?.text = "Guess"
+    guessButton.setTitle("Guess", for: .normal)
     guessButton.addTarget(
       self,
       action: #selector(StreetViewController.onGuessButtonPressed(_:)),
