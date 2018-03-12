@@ -10,7 +10,8 @@ import UIKit
 import GoogleMaps
 import GooglePlaces
 
-protocol MapViewControllerDelegate {
+protocol MapViewControllerDelegate: class {
+  func mapViewController(_ mapViewController: MapViewController, didSelect coordinate: CLLocationCoordinate2D)
   func didPressNextRoundButton(viewController: MapViewController)
 }
 
@@ -44,9 +45,9 @@ class MapViewController: UIViewController {
     mapView.delegate = self
   }
   
-  var delegate: MapViewControllerDelegate?
+  weak var delegate: MapViewControllerDelegate?
   
-  private func showConfirmButton() {
+  private func setUpConfirmButton() {
     confirmButton = UIButton(frame: CGRect(
       x: view.frame.size.width - 50,
       y: view.frame.size.height - 50,
@@ -62,7 +63,7 @@ class MapViewController: UIViewController {
     view.bringSubview(toFront: confirmButton)
   }
   
-  private func showCancelButton() {
+  private func setUpCancelButton() {
     cancelButton = UIButton(frame: CGRect(
       x: view.frame.size.width - 100,
       y: view.frame.size.height - 50,
@@ -78,7 +79,7 @@ class MapViewController: UIViewController {
     view.bringSubview(toFront: cancelButton)
   }
   
-  private func showNextRoundButton() {
+  private func setUpNextRoundButton() {
     nextRoundButton = UIButton(frame: CGRect(
       x: 0,
       y: view.frame.size.height - 50,
@@ -119,7 +120,9 @@ class MapViewController: UIViewController {
     drawPolyline()
     removeButton(button: cancelButton)
     removeButton(button: confirmButton)
-    showNextRoundButton()
+    setUpNextRoundButton()
+    
+    delegate?.mapViewController(self, didSelect: userSelectedCoordinate)
   }
   
   @objc private func onCancelButtonPressed(_ sender: UIButton!) {
@@ -152,7 +155,7 @@ extension MapViewController: GMSMapViewDelegate {
     marker = GMSMarker(position: coordinate)
     marker?.title = "Selected position"
     marker?.map = mapView
-    showConfirmButton()
-    showCancelButton()
+    setUpConfirmButton()
+    setUpCancelButton()
   }
 }

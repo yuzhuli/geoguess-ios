@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import GoogleMaps
 import UIKit
 
 final class ChallengeCoordinator {
@@ -33,6 +34,7 @@ final class ChallengeCoordinator {
   private let challenge: Challenge
   private weak var window: UIWindow?
   private var navigationController: UINavigationController!
+  private var userSelectedCoordinates = [CLLocationCoordinate2D]()
 }
 
 extension ChallengeCoordinator: StreetViewControllerDelegate {
@@ -46,8 +48,19 @@ extension ChallengeCoordinator: StreetViewControllerDelegate {
 extension ChallengeCoordinator: MapViewControllerDelegate {
   func didPressNextRoundButton(viewController: MapViewController) {
     currentRoundIndex += 1
-    let streetViewController = StreetViewController(initialGeoLocation: challenge.rounds[currentRoundIndex].initialGeoLocation)
-    streetViewController.delegate = self
-    navigationController.pushViewController(streetViewController, animated: true)
+    if currentRoundIndex < challenge.rounds.count {
+      let streetViewController = StreetViewController(initialGeoLocation: challenge.rounds[currentRoundIndex].initialGeoLocation)
+      streetViewController.delegate = self
+      navigationController.pushViewController(streetViewController, animated: true)
+      
+    }
+    else {
+      let resultViewController = ResultViewController(challenge: challenge, userSelectedCoordinates: userSelectedCoordinates)
+      navigationController.pushViewController(resultViewController, animated: true)
+    }
+  }
+  
+  func mapViewController(_ mapViewController: MapViewController, didSelect coordinate: CLLocationCoordinate2D) {
+    userSelectedCoordinates.append(coordinate)
   }
 }
