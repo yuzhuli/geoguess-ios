@@ -16,7 +16,7 @@ struct Round {
 struct Challenge {
   let name: String
   let description: String
-  let rounds: [Round]
+  var rounds: [Round]
 }
 
 class ChallengeManager {
@@ -24,14 +24,16 @@ class ChallengeManager {
     return Challenge(
       name: "single testing challenge",
       description: "test description",
-      rounds: [Round(initialGeoLocation: GeoUtils.randomSFLocation())])
+      rounds: [Round(initialGeoLocation: GeoUtils.randomSFLocation())]
+    )
   }()
   
   lazy var doubleTestingChallenge: Challenge = {
     return Challenge(
       name: "double testing challenge",
       description: "test description",
-      rounds: [Round(initialGeoLocation: GeoUtils.randomSFLocation()), Round(initialGeoLocation: GeoUtils.randomSFLocation())])
+      rounds: [Round(initialGeoLocation: GeoUtils.randomSFLocation()), Round(initialGeoLocation: GeoUtils.randomSFLocation())]
+    )
   }()
 
   static var shared: ChallengeManager = {
