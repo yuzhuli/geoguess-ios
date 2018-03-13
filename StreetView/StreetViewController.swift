@@ -12,7 +12,7 @@ import UIKit
 import GoogleMaps
 import GooglePlaces
 
-protocol StreetViewControllerDelegate {
+protocol StreetViewControllerDelegate: class {
   func didPressGuessButton(viewController: StreetViewController)
 }
 
@@ -38,7 +38,7 @@ class StreetViewController: UIViewController, GMSMapViewDelegate {
     setUpGuessButton()
   }
   
-  var delegate: StreetViewControllerDelegate?
+  weak var delegate: StreetViewControllerDelegate?
     
   private func setUpGuessButton() {
     guessButton = UIButton(frame: CGRect(

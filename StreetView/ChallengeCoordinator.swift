@@ -11,28 +11,23 @@ import GoogleMaps
 import UIKit
 
 final class ChallengeCoordinator {
-  init(challenge: Challenge, window: UIWindow?) {
+  init(challenge: Challenge, navigationController: UINavigationController) {
     self.challenge = challenge
-    self.window = window
+    self.navigationController = navigationController
   }
 
-  func startFlow() {
-    guard let window = window else { return }
-
+  func showStreetViewController() {
     guard let firstRound = challenge.rounds.first else {
       fatalError("Challenge rounds is empty")
     }
 
     let streetViewController = StreetViewController(initialGeoLocation: firstRound.initialGeoLocation)
     streetViewController.delegate = self
-    navigationController = UINavigationController(rootViewController: streetViewController)
-    window.rootViewController = navigationController
-    window.makeKeyAndVisible()
+    navigationController.pushViewController(streetViewController, animated: true)
   }
   
   private var currentRoundIndex = 0
   private let challenge: Challenge
-  private weak var window: UIWindow?
   private var navigationController: UINavigationController!
   private var userSelectedCoordinates = [CLLocationCoordinate2D]()
 }
@@ -64,3 +59,6 @@ extension ChallengeCoordinator: MapViewControllerDelegate {
     userSelectedCoordinates.append(coordinate)
   }
 }
+
+
+

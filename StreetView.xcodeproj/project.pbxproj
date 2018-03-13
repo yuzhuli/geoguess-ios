@@ -14,6 +14,9 @@
 		FA17097D2026F3BE00CD3957 /* GeoUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA17097C2026F3BE00CD3957 /* GeoUtils.swift */; };
 		FA830DF820511BC40015108E /* ResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA830DF620511BC40015108E /* ResultViewController.swift */; };
 		FA830DF920511BC40015108E /* ResultViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FA830DF720511BC40015108E /* ResultViewController.xib */; };
+		FA830DFD20578F9F0015108E /* ModeSelectionCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA830DFC20578F9F0015108E /* ModeSelectionCoordinator.swift */; };
+		FA830E0020578FDC0015108E /* ModeSelectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA830DFE20578FDC0015108E /* ModeSelectionViewController.swift */; };
+		FA830E0120578FDC0015108E /* ModeSelectionViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FA830DFF20578FDC0015108E /* ModeSelectionViewController.xib */; };
 		FAEBCD1A2021AA6500FCF1C6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAEBCD192021AA6500FCF1C6 /* AppDelegate.swift */; };
 		FAEBCD1C2021AA6500FCF1C6 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAEBCD1B2021AA6500FCF1C6 /* MapViewController.swift */; };
 		FAEBCD212021AA6500FCF1C6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FAEBCD202021AA6500FCF1C6 /* Assets.xcassets */; };
@@ -29,6 +32,9 @@
 		FA17097C2026F3BE00CD3957 /* GeoUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeoUtils.swift; sourceTree = "<group>"; };
 		FA830DF620511BC40015108E /* ResultViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultViewController.swift; sourceTree = "<group>"; };
 		FA830DF720511BC40015108E /* ResultViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ResultViewController.xib; sourceTree = "<group>"; };
+		FA830DFC20578F9F0015108E /* ModeSelectionCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModeSelectionCoordinator.swift; sourceTree = "<group>"; };
+		FA830DFE20578FDC0015108E /* ModeSelectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModeSelectionViewController.swift; sourceTree = "<group>"; };
+		FA830DFF20578FDC0015108E /* ModeSelectionViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ModeSelectionViewController.xib; sourceTree = "<group>"; };
 		FAEBCD162021AA6500FCF1C6 /* StreetView.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = StreetView.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FAEBCD192021AA6500FCF1C6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FAEBCD1B2021AA6500FCF1C6 /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
@@ -112,6 +118,9 @@
 				D8BFE47D202BC870003B4FA6 /* ChallengeCoordinator.swift */,
 				FA830DF620511BC40015108E /* ResultViewController.swift */,
 				FA830DF720511BC40015108E /* ResultViewController.xib */,
+				FA830DFC20578F9F0015108E /* ModeSelectionCoordinator.swift */,
+				FA830DFE20578FDC0015108E /* ModeSelectionViewController.swift */,
+				FA830DFF20578FDC0015108E /* ModeSelectionViewController.xib */,
 			);
 			path = StreetView;
 			sourceTree = "<group>";
@@ -179,6 +188,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				FAEBCD212021AA6500FCF1C6 /* Assets.xcassets in Resources */,
+				FA830E0120578FDC0015108E /* ModeSelectionViewController.xib in Resources */,
 				FA830DF920511BC40015108E /* ResultViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -248,8 +258,10 @@
 			files = (
 				FA17097A2026C7C500CD3957 /* StreetViewController.swift in Sources */,
 				FA17097D2026F3BE00CD3957 /* GeoUtils.swift in Sources */,
+				FA830DFD20578F9F0015108E /* ModeSelectionCoordinator.swift in Sources */,
 				FA830DF820511BC40015108E /* ResultViewController.swift in Sources */,
 				D8BFE47E202BC870003B4FA6 /* ChallengeCoordinator.swift in Sources */,
+				FA830E0020578FDC0015108E /* ModeSelectionViewController.swift in Sources */,
 				FAEBCD1C2021AA6500FCF1C6 /* MapViewController.swift in Sources */,
 				FAEBCD1A2021AA6500FCF1C6 /* AppDelegate.swift in Sources */,
 				D8BFE47C202990DD003B4FA6 /* Challenge.swift in Sources */,
