@@ -13,21 +13,22 @@ import UIKit
 final class ChallengeCoordinator {
   init(challenge: Challenge, navigationController: UINavigationController) {
     self.challenge = challenge
-    self.navigationController = navigationController
+    self.parentNavigationController = navigationController
   }
 
   func showStreetViewController() {
     guard let firstRound = challenge.rounds.first else {
       fatalError("Challenge rounds is empty")
     }
-
     let streetViewController = StreetViewController(initialGeoLocation: firstRound.initialGeoLocation)
     streetViewController.delegate = self
-    navigationController.pushViewController(streetViewController, animated: true)
+    navigationController = UINavigationController(rootViewController: streetViewController)
+    parentNavigationController.present(navigationController, animated: true)
   }
   
   private var currentRoundIndex = 0
   private let challenge: Challenge
+  private var parentNavigationController: UINavigationController!
   private var navigationController: UINavigationController!
   private var userSelectedCoordinates = [CLLocationCoordinate2D]()
 }
