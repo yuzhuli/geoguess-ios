@@ -12,6 +12,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ResultViewController" customModule="StreetView" customModuleProvider="target">
             <connections>
+                <outlet property="exitButton" destination="BRX-2O-xff" id="4S8-Jw-eOg"/>
                 <outlet property="resultTableView" destination="JOb-Vy-qi8" id="h4A-gL-bRi"/>
                 <outlet property="scoreLabel" destination="GPe-XP-mpL" id="Quo-La-LAU"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
@@ -48,6 +49,14 @@
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                 </tableView>
+                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BRX-2O-xff">
+                    <rect key="frame" x="254" y="97" width="63" height="35"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <state key="normal" title="Exit"/>
+                    <connections>
+                        <action selector="onExitButtonPressed:" destination="-1" eventType="touchUpInside" id="5W5-BJ-cYM"/>
+                    </connections>
+                </button>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>

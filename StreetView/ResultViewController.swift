@@ -10,11 +10,14 @@ import UIKit
 import GoogleMaps
 import CoreLocation
 
+protocol ResultViewControllerDelegate: class {
+  func didPressOnExitButton(viewController: ResultViewController)
+}
+
 private let ResultTableViewCellIdentifier = "ResultTableViewCellIdentifier"
 
 class ResultViewController: UIViewController {
 
-  
   init(challenge: Challenge, userSelectedCoordinates: [CLLocationCoordinate2D]) {
     self.challenge = challenge
     self.userSelectedCoordinates = userSelectedCoordinates
@@ -25,9 +28,6 @@ class ResultViewController: UIViewController {
     fatalError("init(coder:) has not been implemented")
   }
   
-  @IBOutlet weak var scoreLabel: UILabel!
-  @IBOutlet weak var resultTableView: UITableView!
-
   override func viewDidLoad() {
     super.viewDidLoad()
     resultTableView.dataSource = self
@@ -38,6 +38,16 @@ class ResultViewController: UIViewController {
     super.didReceiveMemoryWarning()
     // Dispose of any resources that can be recreated.
   }
+  
+  
+  @IBAction func onExitButtonPressed(_ sender: Any) {
+    delegate?.didPressOnExitButton(viewController: self)
+  }
+  
+  @IBOutlet weak var scoreLabel: UILabel!
+  @IBOutlet weak var resultTableView: UITableView!
+  @IBOutlet weak var exitButton: UIButton!
+  weak var delegate: ResultViewControllerDelegate?
   
   private let challenge: Challenge!
   private let userSelectedCoordinates: [CLLocationCoordinate2D]!

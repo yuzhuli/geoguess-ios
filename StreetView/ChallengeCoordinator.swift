@@ -52,12 +52,19 @@ extension ChallengeCoordinator: MapViewControllerDelegate {
     }
     else {
       let resultViewController = ResultViewController(challenge: challenge, userSelectedCoordinates: userSelectedCoordinates)
+      resultViewController.delegate = self
       navigationController.pushViewController(resultViewController, animated: true)
     }
   }
   
   func mapViewController(_ mapViewController: MapViewController, didSelect coordinate: CLLocationCoordinate2D) {
     userSelectedCoordinates.append(coordinate)
+  }
+}
+
+extension ChallengeCoordinator: ResultViewControllerDelegate {
+  func didPressOnExitButton(viewController: ResultViewController) {
+    navigationController.dismiss(animated: true)
   }
 }
 
