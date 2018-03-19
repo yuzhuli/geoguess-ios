@@ -12,6 +12,8 @@
 		D8BFE47E202BC870003B4FA6 /* ChallengeCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8BFE47D202BC870003B4FA6 /* ChallengeCoordinator.swift */; };
 		FA17097A2026C7C500CD3957 /* StreetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA1709792026C7C500CD3957 /* StreetViewController.swift */; };
 		FA17097D2026F3BE00CD3957 /* GeoUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA17097C2026F3BE00CD3957 /* GeoUtils.swift */; };
+		FA5D1504205B927300F5AD9C /* city5000.json in Resources */ = {isa = PBXBuildFile; fileRef = FA5D1503205B927200F5AD9C /* city5000.json */; };
+		FA5D1506205F136A00F5AD9C /* City.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA5D1505205F136A00F5AD9C /* City.swift */; };
 		FA830DF820511BC40015108E /* ResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA830DF620511BC40015108E /* ResultViewController.swift */; };
 		FA830DF920511BC40015108E /* ResultViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FA830DF720511BC40015108E /* ResultViewController.xib */; };
 		FA830DFD20578F9F0015108E /* ModeSelectionCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA830DFC20578F9F0015108E /* ModeSelectionCoordinator.swift */; };
@@ -30,6 +32,8 @@
 		F16B2B29DC0BC942B64B63ED /* Pods-StreetView.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StreetView.release.xcconfig"; path = "Pods/Target Support Files/Pods-StreetView/Pods-StreetView.release.xcconfig"; sourceTree = "<group>"; };
 		FA1709792026C7C500CD3957 /* StreetViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StreetViewController.swift; sourceTree = "<group>"; };
 		FA17097C2026F3BE00CD3957 /* GeoUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeoUtils.swift; sourceTree = "<group>"; };
+		FA5D1503205B927200F5AD9C /* city5000.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = city5000.json; sourceTree = "<group>"; };
+		FA5D1505205F136A00F5AD9C /* City.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = City.swift; sourceTree = "<group>"; };
 		FA830DF620511BC40015108E /* ResultViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultViewController.swift; sourceTree = "<group>"; };
 		FA830DF720511BC40015108E /* ResultViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ResultViewController.xib; sourceTree = "<group>"; };
 		FA830DFC20578F9F0015108E /* ModeSelectionCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModeSelectionCoordinator.swift; sourceTree = "<group>"; };
@@ -75,6 +79,7 @@
 			isa = PBXGroup;
 			children = (
 				D8BFE47B202990DD003B4FA6 /* Challenge.swift */,
+				FA5D1505205F136A00F5AD9C /* City.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -85,6 +90,14 @@
 				FA17097C2026F3BE00CD3957 /* GeoUtils.swift */,
 			);
 			path = Utils;
+			sourceTree = "<group>";
+		};
+		FA5D1502205B926300F5AD9C /* data */ = {
+			isa = PBXGroup;
+			children = (
+				FA5D1503205B927200F5AD9C /* city5000.json */,
+			);
+			path = data;
 			sourceTree = "<group>";
 		};
 		FAEBCD0D2021AA6500FCF1C6 = {
@@ -108,6 +121,7 @@
 		FAEBCD182021AA6500FCF1C6 /* StreetView */ = {
 			isa = PBXGroup;
 			children = (
+				FA5D1502205B926300F5AD9C /* data */,
 				D8BFE47A202990C7003B4FA6 /* Models */,
 				FA17097B2026F3A300CD3957 /* Utils */,
 				FAEBCD192021AA6500FCF1C6 /* AppDelegate.swift */,
@@ -188,6 +202,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				FAEBCD212021AA6500FCF1C6 /* Assets.xcassets in Resources */,
+				FA5D1504205B927300F5AD9C /* city5000.json in Resources */,
 				FA830E0120578FDC0015108E /* ModeSelectionViewController.xib in Resources */,
 				FA830DF920511BC40015108E /* ResultViewController.xib in Resources */,
 			);
@@ -202,9 +217,14 @@
 			files = (
 			);
 			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-StreetView/Pods-StreetView-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/ObjectMapper/ObjectMapper.framework",
+				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ObjectMapper.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -262,6 +282,7 @@
 				FA830DF820511BC40015108E /* ResultViewController.swift in Sources */,
 				D8BFE47E202BC870003B4FA6 /* ChallengeCoordinator.swift in Sources */,
 				FA830E0020578FDC0015108E /* ModeSelectionViewController.swift in Sources */,
+				FA5D1506205F136A00F5AD9C /* City.swift in Sources */,
 				FAEBCD1C2021AA6500FCF1C6 /* MapViewController.swift in Sources */,
 				FAEBCD1A2021AA6500FCF1C6 /* AppDelegate.swift in Sources */,
 				D8BFE47C202990DD003B4FA6 /* Challenge.swift in Sources */,

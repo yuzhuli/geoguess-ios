@@ -12,6 +12,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ModeSelectionViewController" customModule="StreetView" customModuleProvider="target">
             <connections>
+                <outlet property="cityChallenge" destination="4o1-Fm-Ug5" id="5Rp-i2-Ds4"/>
                 <outlet property="startMapGame" destination="cGv-2T-txo" id="VrL-gc-yO6"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
@@ -27,6 +28,14 @@
                     <state key="normal" title="Start Game"/>
                     <connections>
                         <action selector="onStartMapGameButtonPressed:" destination="-1" eventType="touchUpInside" id="Sa0-bD-5zz"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4o1-Fm-Ug5">
+                    <rect key="frame" x="115" y="379" width="147" height="30"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <state key="normal" title="City Challenge"/>
+                    <connections>
+                        <action selector="onCityChallengeButtonPressed:" destination="-1" eventType="touchUpInside" id="0Wv-4v-ox3"/>
                     </connections>
                 </button>
             </subviews>

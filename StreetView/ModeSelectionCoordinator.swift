@@ -36,4 +36,13 @@ extension ModeSelectionCoordinator: ModeSelectionViewControllerDelegate {
     challengeCoordinator.showStreetViewController()
     self.challengeCoordinator = challengeCoordinator
   }
+  
+  func didPressCityChallengeButton(viewController: ModeSelectionViewController) {
+    guard let challenge = ChallengeManager.shared.generateCityChallenge() else {
+      return
+    }
+    let challengeCoordinator = ChallengeCoordinator(challenge: challenge, navigationController: navigationController)
+    challengeCoordinator.showStreetViewController()
+    self.challengeCoordinator = challengeCoordinator
+  }
 }

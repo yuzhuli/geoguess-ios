@@ -6,15 +6,21 @@ PODS:
     - GoogleMaps/Base
   - GooglePlaces (2.5.0):
     - GoogleMaps/Base (= 2.5.0)
+  - ObjectMapper (3.1.0)
+  - SwiftyJSON (4.0.0)
 
 DEPENDENCIES:
   - GoogleMaps
   - GooglePlaces
+  - ObjectMapper (~> 3.1)
+  - SwiftyJSON
 
 SPEC CHECKSUMS:
   GoogleMaps: c087b8e5dfe87ca6ebf59adb9b4894a4146bec4f
   GooglePlaces: dd70d9d71ea1c7944846afe67de3712c99b30a77
+  ObjectMapper: 20505058f54e5c3ca69e1d6de9897d152a5369a6
+  SwiftyJSON: 070dabdcb1beb81b247c65ffa3a79dbbfb3b48aa
 
-PODFILE CHECKSUM: 99df93c9647d33157c11ee0698c5740852e14ccb
+PODFILE CHECKSUM: a03327e3622e36c41c693a47e43a2abf8144981a
 
 COCOAPODS: 1.4.0
