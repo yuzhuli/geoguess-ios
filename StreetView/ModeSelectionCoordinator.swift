@@ -38,7 +38,8 @@ extension ModeSelectionCoordinator: ModeSelectionViewControllerDelegate {
   }
   
   func didPressCityChallengeButton(viewController: ModeSelectionViewController) {
-    guard let challenge = ChallengeManager.shared.generateCityChallenge() else {
+    guard let challenge = ChallengeManager.shared.generateNewCityChallenge() else {
+      print(1)
       return
     }
     let challengeCoordinator = ChallengeCoordinator(challenge: challenge, navigationController: navigationController)

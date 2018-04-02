@@ -18,9 +18,10 @@ private let ResultTableViewCellIdentifier = "ResultTableViewCellIdentifier"
 
 class ResultViewController: UIViewController {
 
-  init(challenge: Challenge, userSelectedCoordinates: [CLLocationCoordinate2D]) {
+  init(challenge: Challenge, userSelectedCoordinates: [CLLocationCoordinate2D], userSelectedCities: [City]) {
     self.challenge = challenge
     self.userSelectedCoordinates = userSelectedCoordinates
+    self.userSelectedCities = userSelectedCities
     super.init(nibName: nil, bundle: nil)
   }
   
@@ -51,22 +52,38 @@ class ResultViewController: UIViewController {
   
   private let challenge: Challenge!
   private let userSelectedCoordinates: [CLLocationCoordinate2D]!
+  private let userSelectedCities: [City]?
 }
 
 extension ResultViewController: UITableViewDataSource {
   func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-    return self.userSelectedCoordinates.count
+    var rows: Int
+    if challenge.challengeMode == "map" {
+      rows = self.userSelectedCoordinates.count
+    } else {
+      rows = self.userSelectedCities!.count
+    }
+    return rows
   }
   
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
     let cell = tableView.dequeueReusableCell(withIdentifier: ResultTableViewCellIdentifier)!
-    let initialGeolocation = self.challenge.rounds[indexPath.row].initialGeoLocation
-    let initialGeolocationCLLocation = CLLocation(latitude: initialGeolocation.latitude, longitude: initialGeolocation.longitude)
-    let userSelectedCoordinateCLLocation = CLLocation(latitude: userSelectedCoordinates[indexPath.row].latitude, longitude: userSelectedCoordinates[indexPath.row].longitude)
-    let distance = initialGeolocationCLLocation.distance(from: userSelectedCoordinateCLLocation)
-    let distanceInKM = distance / 1000
-    let roundedDistanceInKM = Double(round(100 * distanceInKM) / 100)
-    cell.textLabel?.text = "Round \(indexPath.row): \(roundedDistanceInKM)"
+    print(challenge.challengeMode)
+    if challenge.challengeMode == "map" {
+      let initialGeolocation = self.challenge.rounds[indexPath.row].initialGeoLocation
+      let initialGeolocationCLLocation = CLLocation(latitude: initialGeolocation.latitude, longitude: initialGeolocation.longitude)
+      let userSelectedCoordinateCLLocation = CLLocation(latitude: userSelectedCoordinates[indexPath.row].latitude, longitude: userSelectedCoordinates[indexPath.row].longitude)
+      let distance = initialGeolocationCLLocation.distance(from: userSelectedCoordinateCLLocation)
+      let distanceInKM = distance / 1000
+      let roundedDistanceInKM = Double(round(100 * distanceInKM) / 100)
+      cell.textLabel?.text = "Round \(indexPath.row): \(roundedDistanceInKM)"
+    }
+    if challenge.challengeMode == "multipleChoice" {
+      let userSelectedCity = userSelectedCities![indexPath.row]
+      let expectedAnswerIndex = challenge.rounds[indexPath.row].expectedAnswerIndex
+      let expectedAnswer = challenge.rounds[indexPath.row].allOptions![expectedAnswerIndex!]
+      cell.textLabel?.text = "\(indexPath.row). Correct answer: \(expectedAnswer.cityName!) \(expectedAnswer.country!); Your answer: \(userSelectedCity.cityName!) \(userSelectedCity.country!)"
+    }
     return cell
   }
 }

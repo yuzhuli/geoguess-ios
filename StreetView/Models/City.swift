@@ -25,3 +25,9 @@ class City: Mappable {
     longitude        <- map["Longitude"]
   }
 }
+
+extension City: Equatable {
+  static func ==(lhs: City, rhs: City) -> Bool {
+    return lhs.cityName == rhs.cityName && lhs.country == rhs.country && lhs.latitude == rhs.latitude && lhs.longitude == rhs.longitude
+  }
+}
