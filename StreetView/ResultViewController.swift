@@ -14,7 +14,7 @@ protocol ResultViewControllerDelegate: class {
   func didPressOnExitButton(viewController: ResultViewController)
 }
 
-private let ResultTableViewCellIdentifier = "ResultTableViewCellIdentifier"
+private let ResultTableViewCellIdentifier = "cityChallengeResultTableViewCell"
 
 class ResultViewController: UIViewController {
 
@@ -32,7 +32,10 @@ class ResultViewController: UIViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
     resultTableView.dataSource = self
-    resultTableView.register(UITableViewCell.self, forCellReuseIdentifier: ResultTableViewCellIdentifier)
+//    resultTableView.register(UITableViewCell.self, forCellReuseIdentifier: ResultTableViewCellIdentifier)
+    resultTableView.register(
+      UINib(nibName: "CityChallengeResultTableViewCell", bundle: nil),
+      forCellReuseIdentifier: ResultTableViewCellIdentifier)
   }
 
   override func didReceiveMemoryWarning() {
@@ -67,8 +70,8 @@ extension ResultViewController: UITableViewDataSource {
   }
   
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-    let cell = tableView.dequeueReusableCell(withIdentifier: ResultTableViewCellIdentifier)!
-    print(challenge.challengeMode)
+    let cell = tableView.dequeueReusableCell(withIdentifier: ResultTableViewCellIdentifier) as! CityChallengeResultTableViewCell
+
     if challenge.challengeMode == "map" {
       let initialGeolocation = self.challenge.rounds[indexPath.row].initialGeoLocation
       let initialGeolocationCLLocation = CLLocation(latitude: initialGeolocation.latitude, longitude: initialGeolocation.longitude)
@@ -82,7 +85,15 @@ extension ResultViewController: UITableViewDataSource {
       let userSelectedCity = userSelectedCities![indexPath.row]
       let expectedAnswerIndex = challenge.rounds[indexPath.row].expectedAnswerIndex
       let expectedAnswer = challenge.rounds[indexPath.row].allOptions![expectedAnswerIndex!]
-      cell.textLabel?.text = "\(indexPath.row). Correct answer: \(expectedAnswer.cityName!) \(expectedAnswer.country!); Your answer: \(userSelectedCity.cityName!) \(userSelectedCity.country!)"
+      if userSelectedCity == expectedAnswer {
+        //cell.cityChallengeCellImageView.image = UIImage(named: "checkMark")
+        cell.cityChallengeCellImageView.image = #imageLiteral(resourceName: "checkMark")
+      } else {
+        cell.cityChallengeCellImageView.image = #imageLiteral(resourceName: "crossMark")
+      }
+      cell.cityChallengeCellExpected.text = "Expected: \(expectedAnswer.cityName!) \(expectedAnswer.country!)"
+      cell.cityChallengeCellUserAnswer.text = "Your Answer: \(userSelectedCity.cityName!) \(userSelectedCity.country!)"
+//      cell.cityChallengeCellUserAnswer.font
     }
     return cell
   }

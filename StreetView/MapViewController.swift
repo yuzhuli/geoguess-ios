@@ -49,11 +49,14 @@ class MapViewController: UIViewController {
   
   private func setUpConfirmButton() {
     confirmButton = UIButton(frame: CGRect(
-      x: view.frame.size.width - 50,
-      y: view.frame.size.height - 50,
-      width: 50,
-      height: 50))
-    confirmButton.backgroundColor = UIColor.green
+      x: view.frame.size.width / 2 - 100,
+      y: view.frame.size.height - 88,
+      width: 200,
+      height: 32))
+    confirmButton.layer.cornerRadius = 10
+    confirmButton.clipsToBounds = true
+    let confirmButtonColor = UIColor(red:0.50, green:0.07, blue:0.20, alpha:1.0)
+    confirmButton.backgroundColor = confirmButtonColor
     confirmButton.setTitle("Confirm", for: .normal)
     confirmButton.addTarget(
       self,
@@ -65,12 +68,18 @@ class MapViewController: UIViewController {
   
   private func setUpCancelButton() {
     cancelButton = UIButton(frame: CGRect(
-      x: view.frame.size.width - 100,
-      y: view.frame.size.height - 50,
-      width: 50,
-      height: 50))
-    cancelButton.backgroundColor = UIColor.black
+      x: view.frame.size.width / 2 - 100,
+      y: view.frame.size.height - 48,
+      width: 200,
+      height: 32))
+    cancelButton.layer.cornerRadius = 10
+    cancelButton.clipsToBounds = true
+    cancelButton.backgroundColor = UIColor.white
     cancelButton.setTitle("Cancel", for: .normal)
+    let cancelButtonTitleColor = UIColor(red:0.50, green:0.07, blue:0.20, alpha:1.0)
+    cancelButton.setTitleColor(cancelButtonTitleColor, for: .normal)
+    cancelButton.layer.borderWidth = 1.0
+    cancelButton.layer.borderColor = cancelButtonTitleColor.cgColor
     cancelButton.addTarget(
       self,
       action: #selector(MapViewController.onCancelButtonPressed(_:)),
@@ -81,12 +90,15 @@ class MapViewController: UIViewController {
   
   private func setUpNextRoundButton() {
     nextRoundButton = UIButton(frame: CGRect(
-      x: 0,
-      y: view.frame.size.height - 50,
-      width: 50,
-      height: 50))
+      x: view.frame.size.width / 2 - 100,
+      y: view.frame.size.height - 48,
+      width: 200,
+      height: 32))
     nextRoundButton.setTitle("Next Round", for: .normal)
-    nextRoundButton.backgroundColor = UIColor.blue
+    nextRoundButton.layer.cornerRadius = 10
+    nextRoundButton.clipsToBounds = true
+    let nextRoundButtonColor = UIColor(red:0.50, green:0.07, blue:0.20, alpha:1.0)
+    nextRoundButton.backgroundColor = nextRoundButtonColor
     nextRoundButton.addTarget(
       self,
       action: #selector(MapViewController.onNextRoundButtonPressed(_:)),

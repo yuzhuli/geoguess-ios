@@ -10,4 +10,5 @@ target 'StreetView' do
   pod 'GooglePlaces'
   pod 'ObjectMapper', '~> 3.1'
   pod 'SwiftyJSON'
+  pod 'LGButton'
 end

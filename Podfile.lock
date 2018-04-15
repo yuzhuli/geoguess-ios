@@ -6,21 +6,24 @@ PODS:
     - GoogleMaps/Base
   - GooglePlaces (2.5.0):
     - GoogleMaps/Base (= 2.5.0)
+  - LGButton (1.0.5)
   - ObjectMapper (3.1.0)
   - SwiftyJSON (4.0.0)
 
 DEPENDENCIES:
   - GoogleMaps
   - GooglePlaces
+  - LGButton
   - ObjectMapper (~> 3.1)
   - SwiftyJSON
 
 SPEC CHECKSUMS:
   GoogleMaps: c087b8e5dfe87ca6ebf59adb9b4894a4146bec4f
   GooglePlaces: dd70d9d71ea1c7944846afe67de3712c99b30a77
+  LGButton: 707ce916eb80b73a6c4688df34bee11adbafb663
   ObjectMapper: 20505058f54e5c3ca69e1d6de9897d152a5369a6
   SwiftyJSON: 070dabdcb1beb81b247c65ffa3a79dbbfb3b48aa
 
-PODFILE CHECKSUM: a03327e3622e36c41c693a47e43a2abf8144981a
+PODFILE CHECKSUM: 397e9cdceefc107f01f58c6413abb7993b232d40
 
 COCOAPODS: 1.4.0

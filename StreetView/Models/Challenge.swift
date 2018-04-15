@@ -58,10 +58,10 @@ class ChallengeManager {
     guard let top5000Cities = self.top5000Cities else {
       return nil
     }
-    let rounds = generateRoundsForCityChallenge(cityPool: top5000Cities, amount: 5)
+    let rounds = generateRoundsForCityChallenge(cityPool: top5000Cities, amount: 2)
     return Challenge(
       name: "city challenge",
-      description: "5 rounds of city challenge",
+      description: "city challenge",
       challengeMode: "multipleChoice",
       rounds: rounds)
   }

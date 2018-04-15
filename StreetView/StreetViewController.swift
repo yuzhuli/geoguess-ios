@@ -42,12 +42,15 @@ class StreetViewController: UIViewController, GMSMapViewDelegate {
     
   private func setUpGuessButton() {
     guessButton = UIButton(frame: CGRect(
-      x: view.frame.size.width - 50,
-      y: view.frame.size.height - 50,
-      width: 50,
-      height: 50))
-    guessButton.backgroundColor = UIColor.red
-    guessButton.setTitle("Guess", for: .normal)
+      x: view.frame.size.width / 2 - 100,
+      y: view.frame.size.height - 48,
+      width: 224,
+      height: 24))
+    guessButton.layer.cornerRadius = 10
+    guessButton.clipsToBounds = true
+    let guessButtonColor = UIColor(red:0.50, green:0.07, blue:0.20, alpha:1.0)
+    guessButton.backgroundColor = guessButtonColor
+    guessButton.setTitle("I know where this is!", for: .normal)
     guessButton.addTarget(
       self,
       action: #selector(StreetViewController.onGuessButtonPressed(_:)),

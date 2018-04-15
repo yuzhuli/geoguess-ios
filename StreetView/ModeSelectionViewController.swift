@@ -25,17 +25,13 @@ class ModeSelectionViewController: UIViewController {
     // Dispose of any resources that can be recreated.
   }
   
+  @IBAction func onStartMapGameButtonPressed(_ sender: Any) {
+    delegate?.didPressStartMapGameButton(viewController: self)
+  }
   
   @IBAction func onCityChallengeButtonPressed(_ sender: Any) {
     delegate?.didPressCityChallengeButton(viewController: self)
   }
   
-  @IBAction func onStartMapGameButtonPressed(_ sender: Any) {
-    delegate?.didPressStartMapGameButton(viewController: self)
-  }
-  
-  @IBOutlet weak var cityChallenge: UIButton!
-  
-  @IBOutlet weak var startMapGame: UIButton!
   weak var delegate: ModeSelectionViewControllerDelegate?
 }
