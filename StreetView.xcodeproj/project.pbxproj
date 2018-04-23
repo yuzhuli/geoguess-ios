@@ -28,6 +28,8 @@
 		FAF7A86E207ADCA90076202F /* ButtonColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAF7A86D207ADCA90076202F /* ButtonColors.swift */; };
 		FAF7A870207DD6E00076202F /* CityChallengeResultTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FAF7A86F207DD6E00076202F /* CityChallengeResultTableViewCell.xib */; };
 		FAF7A872207DE08E0076202F /* CityChallengeResultTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAF7A871207DE08E0076202F /* CityChallengeResultTableViewCell.swift */; };
+		FAF7A8A1208D48100076202F /* CityChallengeResultCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAF7A89F208D48100076202F /* CityChallengeResultCollectionViewCell.swift */; };
+		FAF7A8A2208D48100076202F /* CityChallengeResultCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FAF7A8A0208D48100076202F /* CityChallengeResultCollectionViewCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -56,6 +58,8 @@
 		FAF7A86D207ADCA90076202F /* ButtonColors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonColors.swift; sourceTree = "<group>"; };
 		FAF7A86F207DD6E00076202F /* CityChallengeResultTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CityChallengeResultTableViewCell.xib; sourceTree = "<group>"; };
 		FAF7A871207DE08E0076202F /* CityChallengeResultTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityChallengeResultTableViewCell.swift; sourceTree = "<group>"; };
+		FAF7A89F208D48100076202F /* CityChallengeResultCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityChallengeResultCollectionViewCell.swift; sourceTree = "<group>"; };
+		FAF7A8A0208D48100076202F /* CityChallengeResultCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CityChallengeResultCollectionViewCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -153,6 +157,8 @@
 				FA5D15082060D9CB00F5AD9C /* MultipleChoiceViewController.xib */,
 				FAF7A86F207DD6E00076202F /* CityChallengeResultTableViewCell.xib */,
 				FAF7A871207DE08E0076202F /* CityChallengeResultTableViewCell.swift */,
+				FAF7A89F208D48100076202F /* CityChallengeResultCollectionViewCell.swift */,
+				FAF7A8A0208D48100076202F /* CityChallengeResultCollectionViewCell.xib */,
 			);
 			path = StreetView;
 			sourceTree = "<group>";
@@ -223,6 +229,7 @@
 				FA5D1504205B927300F5AD9C /* city5000.json in Resources */,
 				FA830E0120578FDC0015108E /* ModeSelectionViewController.xib in Resources */,
 				FA5D150A2060D9CB00F5AD9C /* MultipleChoiceViewController.xib in Resources */,
+				FAF7A8A2208D48100076202F /* CityChallengeResultCollectionViewCell.xib in Resources */,
 				FA830DF920511BC40015108E /* ResultViewController.xib in Resources */,
 				FAF7A870207DD6E00076202F /* CityChallengeResultTableViewCell.xib in Resources */,
 			);
@@ -301,6 +308,7 @@
 				FA17097A2026C7C500CD3957 /* StreetViewController.swift in Sources */,
 				FA862D022064C5F80055C4E9 /* CollectionUtils.swift in Sources */,
 				FA17097D2026F3BE00CD3957 /* GeoUtils.swift in Sources */,
+				FAF7A8A1208D48100076202F /* CityChallengeResultCollectionViewCell.swift in Sources */,
 				FAF7A872207DE08E0076202F /* CityChallengeResultTableViewCell.swift in Sources */,
 				FA830DFD20578F9F0015108E /* ModeSelectionCoordinator.swift in Sources */,
 				FA830DF820511BC40015108E /* ResultViewController.swift in Sources */,
