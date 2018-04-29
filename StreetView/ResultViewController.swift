@@ -74,20 +74,28 @@ class ResultViewController: UIViewController {
     let entry1 = PieChartDataEntry(value: Double(numOfCorrectAnswers), label: "Correct")
     let entry2 = PieChartDataEntry(value: Double(numOfWrongAnswers), label: "Wrong")
     let dataSet = PieChartDataSet(values: [entry1, entry2], label: nil)
-    dataSet.colors = ChartColorTemplates.joyful()
     let data = PieChartData(dataSet: dataSet)
     pieChartView.data = data
     
-    pieChartView.holeRadiusPercent = 0.80
+    pieChartView.holeRadiusPercent = 0.95
     
+    pieChartView.animate(yAxisDuration: 1.4)
+    
+    var pieChartColors: [UIColor] = []
+    pieChartColors.append(UIColor.white.withAlphaComponent(0.5))
+    pieChartColors.append(UIColor.black.withAlphaComponent(0.5))
+    dataSet.colors = pieChartColors
     pieChartView.backgroundColor = UIColor.clear
     pieChartView.holeColor = UIColor.clear
+    
     pieChartView.centerText = "\(numOfCorrectAnswers)/\(total)"
+    
     pieChartView.legend.enabled = false
     pieChartView.chartDescription?.enabled = false
-    pieChartView.notifyDataSetChanged()
     pieChartView.drawEntryLabelsEnabled = false
     dataSet.drawValuesEnabled = false
+    
+    pieChartView.notifyDataSetChanged()
   }
   
   private func countCorrectAnswers() -> Int {
