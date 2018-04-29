@@ -13,6 +13,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ResultViewController" customModule="StreetView" customModuleProvider="target">
             <connections>
                 <outlet property="exitButton" destination="BRX-2O-xff" id="4S8-Jw-eOg"/>
+                <outlet property="pieChartView" destination="fM5-LS-vZb" id="5ZP-n5-0IV"/>
                 <outlet property="resultCollectionView" destination="aM0-UN-sPL" id="JHt-M9-aVo"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
@@ -23,12 +24,14 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bsg-l6-OJG">
-                    <rect key="frame" x="0.0" y="20" width="375" height="100"/>
+                    <rect key="frame" x="0.0" y="220" width="375" height="32"/>
                     <subviews>
-                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BRX-2O-xff">
-                            <rect key="frame" x="153" y="47" width="63" height="35"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <state key="normal" title="Exit"/>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BRX-2O-xff">
+                            <rect key="frame" x="107.5" y="0.0" width="160" height="32"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="160" id="OQP-Y9-QEy"/>
+                            </constraints>
+                            <state key="normal" title="Start New Game"/>
                             <connections>
                                 <action selector="onExitButtonPressed:" destination="-1" eventType="touchUpInside" id="5W5-BJ-cYM"/>
                             </connections>
@@ -36,11 +39,14 @@
                     </subviews>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="100" id="7HI-Of-qrc"/>
+                        <constraint firstItem="BRX-2O-xff" firstAttribute="centerX" secondItem="bsg-l6-OJG" secondAttribute="centerX" id="2fx-WO-w6q"/>
+                        <constraint firstAttribute="height" constant="32" id="7HI-Of-qrc"/>
+                        <constraint firstAttribute="bottom" secondItem="BRX-2O-xff" secondAttribute="bottom" id="IvL-Aj-hus"/>
+                        <constraint firstItem="BRX-2O-xff" firstAttribute="top" secondItem="bsg-l6-OJG" secondAttribute="top" id="py2-WQ-Ej0"/>
                     </constraints>
                 </view>
                 <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="aM0-UN-sPL">
-                    <rect key="frame" x="0.0" y="120" width="375" height="547"/>
+                    <rect key="frame" x="0.0" y="252" width="375" height="415"/>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="CKm-rk-ZUF">
                         <size key="itemSize" width="50" height="50"/>
@@ -49,14 +55,25 @@
                         <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                     </collectionViewFlowLayout>
                 </collectionView>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fM5-LS-vZb" customClass="PieChartView" customModule="Charts">
+                    <rect key="frame" x="0.0" y="20" width="375" height="200"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="200" id="HKV-3G-B3B"/>
+                    </constraints>
+                </view>
             </subviews>
             <constraints>
-                <constraint firstItem="bsg-l6-OJG" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="1u0-Xz-oRC"/>
+                <constraint firstItem="bsg-l6-OJG" firstAttribute="top" secondItem="fM5-LS-vZb" secondAttribute="bottom" id="1u0-Xz-oRC"/>
                 <constraint firstItem="bsg-l6-OJG" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="4ve-HN-bBn"/>
                 <constraint firstItem="bsg-l6-OJG" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" id="AVL-re-F2Y"/>
+                <constraint firstItem="fM5-LS-vZb" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="ByH-gF-OvX"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="aM0-UN-sPL" secondAttribute="trailing" id="HVG-la-tFd"/>
+                <constraint firstItem="fM5-LS-vZb" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="QlD-nc-TXW"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="aM0-UN-sPL" secondAttribute="bottom" id="bBJ-qr-G0N"/>
                 <constraint firstItem="aM0-UN-sPL" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="gHI-Kx-S3t"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="fM5-LS-vZb" secondAttribute="trailing" id="pDv-M3-fkl"/>
+                <constraint firstItem="fM5-LS-vZb" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="tjk-35-Q9g"/>
                 <constraint firstItem="aM0-UN-sPL" firstAttribute="top" secondItem="bsg-l6-OJG" secondAttribute="bottom" id="yP6-Wj-rIP"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>

@@ -9,6 +9,7 @@
 import UIKit
 import GoogleMaps
 import CoreLocation
+import Charts
 
 protocol ResultViewControllerDelegate: class {
   func didPressOnExitButton(viewController: ResultViewController)
@@ -37,6 +38,7 @@ class ResultViewController: UIViewController {
       UINib(nibName: "CityChallengeResultCollectionViewCell", bundle: nil),
       forCellWithReuseIdentifier: cityChallengeResultCollectionViewCell)
     view.setGradientBackground(colorOne: UIColor.PurpleBlue, colorTwo: UIColor.GreenBlue, colorThree: UIColor.PurpleBlue)
+    setUpPieChart()
   }
   
   override func viewDidLayoutSubviews() {
@@ -49,13 +51,14 @@ class ResultViewController: UIViewController {
   }
   
   @IBOutlet weak var resultCollectionView: UICollectionView!
+  @IBOutlet weak var pieChartView: PieChartView!
   @IBOutlet weak var exitButton: UIButton!
   weak var delegate: ResultViewControllerDelegate?
   
   var LayoutSingleColumn: UICollectionViewFlowLayout {
     let layout = UICollectionViewFlowLayout()
     let width = resultCollectionView.frame.width - 20
-    let height: CGFloat = 56
+    let height: CGFloat = 48
     layout.itemSize = CGSize(width: width, height: height)
     layout.minimumInteritemSpacing = 8
     layout.minimumLineSpacing = 8
@@ -64,9 +67,44 @@ class ResultViewController: UIViewController {
     return layout
   }
   
+  private func setUpPieChart() {
+    let numOfCorrectAnswers = countCorrectAnswers()
+    let numOfWrongAnswers = challenge.rounds.count - numOfCorrectAnswers
+    let total = numOfWrongAnswers + numOfCorrectAnswers
+    let entry1 = PieChartDataEntry(value: Double(numOfCorrectAnswers), label: "Correct")
+    let entry2 = PieChartDataEntry(value: Double(numOfWrongAnswers), label: "Wrong")
+    let dataSet = PieChartDataSet(values: [entry1, entry2], label: nil)
+    dataSet.colors = ChartColorTemplates.joyful()
+    let data = PieChartData(dataSet: dataSet)
+    pieChartView.data = data
+    
+    pieChartView.holeRadiusPercent = 0.80
+    
+    pieChartView.backgroundColor = UIColor.clear
+    pieChartView.holeColor = UIColor.clear
+    pieChartView.centerText = "\(numOfCorrectAnswers)/\(total)"
+    pieChartView.legend.enabled = false
+    pieChartView.chartDescription?.enabled = false
+    pieChartView.notifyDataSetChanged()
+    pieChartView.drawEntryLabelsEnabled = false
+    dataSet.drawValuesEnabled = false
+  }
+  
+  private func countCorrectAnswers() -> Int {
+    var numOfCorrectAnswers = 0
+    for i in 0 ..< challenge.rounds.count {
+      let expectedAnswerIndex = challenge.rounds[i].expectedAnswerIndex
+      let expectedAnswer = challenge.rounds[i].allOptions![expectedAnswerIndex!]
+      if expectedAnswer == userSelectedCities[i] {
+        numOfCorrectAnswers += 1
+      }
+    }
+    return numOfCorrectAnswers
+  }
+  
   private let challenge: Challenge!
   private let userSelectedCoordinates: [CLLocationCoordinate2D]!
-  private let userSelectedCities: [City]?
+  private let userSelectedCities: [City]
 }
 
 extension ResultViewController: UICollectionViewDataSource {
@@ -97,7 +135,7 @@ extension ResultViewController: UICollectionViewDataSource {
       cell.expectedAnswer.text = "\(roundedDistanceInKM)"
     }
     if challenge.challengeMode == "multipleChoice" {
-      let userSelectedCity = userSelectedCities![indexPath.row]
+      let userSelectedCity = userSelectedCities[indexPath.row]
       let expectedAnswerIndex = challenge.rounds[indexPath.row].expectedAnswerIndex
       let expectedAnswer = challenge.rounds[indexPath.row].allOptions![expectedAnswerIndex!]
       if userSelectedCity == expectedAnswer {
