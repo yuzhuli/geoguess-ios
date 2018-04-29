@@ -18,6 +18,7 @@ private let cityChallengeResultCollectionViewCell = "cityChallengeResultCollecti
 
 class ResultViewController: UIViewController {
 
+  
   init(challenge: Challenge, userSelectedCoordinates: [CLLocationCoordinate2D], userSelectedCities: [City]) {
     self.challenge = challenge
     self.userSelectedCoordinates = userSelectedCoordinates
@@ -35,11 +36,7 @@ class ResultViewController: UIViewController {
     resultCollectionView.register(
       UINib(nibName: "CityChallengeResultCollectionViewCell", bundle: nil),
       forCellWithReuseIdentifier: cityChallengeResultCollectionViewCell)
-  }
-
-  override func didReceiveMemoryWarning() {
-    super.didReceiveMemoryWarning()
-    // Dispose of any resources that can be recreated.
+    view.setGradientBackground(colorOne: UIColor.PurpleBlue, colorTwo: UIColor.GreenBlue, colorThree: UIColor.PurpleBlue)
   }
   
   override func viewDidLayoutSubviews() {
@@ -52,14 +49,13 @@ class ResultViewController: UIViewController {
   }
   
   @IBOutlet weak var resultCollectionView: UICollectionView!
-  @IBOutlet weak var scoreLabel: UILabel!
   @IBOutlet weak var exitButton: UIButton!
   weak var delegate: ResultViewControllerDelegate?
   
   var LayoutSingleColumn: UICollectionViewFlowLayout {
     let layout = UICollectionViewFlowLayout()
     let width = resultCollectionView.frame.width - 20
-    let height: CGFloat = 40
+    let height: CGFloat = 56
     layout.itemSize = CGSize(width: width, height: height)
     layout.minimumInteritemSpacing = 8
     layout.minimumLineSpacing = 8
@@ -71,52 +67,52 @@ class ResultViewController: UIViewController {
   private let challenge: Challenge!
   private let userSelectedCoordinates: [CLLocationCoordinate2D]!
   private let userSelectedCities: [City]?
-//  private let sectionInsets = UIEdgeInsets(top: 50.0, left: 20.0, bottom: 50.0, right: 20.0)
-//  private let itemsPerRow: CGFloat = 1
 }
 
 extension ResultViewController: UICollectionViewDataSource {
   func numberOfSections(in collectionView: UICollectionView) -> Int {
-    // #warning Incomplete implementation, return the number of sections
     return 1
   }
   
-  
   func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-    // #warning Incomplete implementation, return the number of items
     return challenge.rounds.count
   }
   
   func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-    let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cityChallengeResultCollectionViewCell, for: indexPath)
-    cell.backgroundColor = UIColor.blue
-    // Configure the cell
+    let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cityChallengeResultCollectionViewCell, for: indexPath) as! CityChallengeResultCollectionViewCell
+    cell.roundNumber.text = "\(indexPath.row + 1)"
+    cell.backgroundColor = UIColor.lightGray.withAlphaComponent(0.5)
+    cell.layer.cornerRadius = 10
+    cell.layer.borderWidth = 1.0
+    cell.layer.borderColor = UIColor.clear.cgColor
+    cell.layer.masksToBounds = true
+    
+    if challenge.challengeMode == "map" {
+      let initialGeolocation = self.challenge.rounds[indexPath.row].initialGeoLocation
+      let initialGeolocationCLLocation = CLLocation(latitude: initialGeolocation.latitude, longitude: initialGeolocation.longitude)
+      let userSelectedCoordinateCLLocation = CLLocation(latitude: userSelectedCoordinates[indexPath.row].latitude, longitude: userSelectedCoordinates[indexPath.row].longitude)
+      let distance = initialGeolocationCLLocation.distance(from: userSelectedCoordinateCLLocation)
+      let distanceInKM = distance / 1000
+      let roundedDistanceInKM = Double(round(100 * distanceInKM) / 100)
+      cell.expectedAnswer.text = "\(roundedDistanceInKM)"
+    }
+    if challenge.challengeMode == "multipleChoice" {
+      let userSelectedCity = userSelectedCities![indexPath.row]
+      let expectedAnswerIndex = challenge.rounds[indexPath.row].expectedAnswerIndex
+      let expectedAnswer = challenge.rounds[indexPath.row].allOptions![expectedAnswerIndex!]
+      if userSelectedCity == expectedAnswer {
+        //cell.cityChallengeCellImageView.image = UIImage(named: "checkMark")
+        cell.markImage.image = #imageLiteral(resourceName: "checkMark")
+      } else {
+        cell.markImage.image = #imageLiteral(resourceName: "crossMark")
+      }
+      cell.expectedAnswer.text = "Expected: \(expectedAnswer.cityName!) \(expectedAnswer.country!)"
+      cell.userSelectedAnswer.text = "Your Answer: \(userSelectedCity.cityName!) \(userSelectedCity.country!)"
+    }
+    
     return cell
   }
 }
-
-//extension ResultViewController: UICollectionViewDelegateFlowLayout {
-//  func collectionView(_ collectionView: UICollectionView,
-//                      layout collectionViewLayout: UICollectionViewLayout,
-//                      sizeForItemAt indexPath: IndexPath) -> CGSize {
-//    let paddingSpace = sectionInsets.left * (itemsPerRow + 1)
-//    let availableWidth = resultCollectionView.frame.width - paddingSpace
-//    let widthPerItem = availableWidth / itemsPerRow
-//    return CGSize(width: widthPerItem, height: widthPerItem)
-//  }
-//
-//  func collectionView(_ collectionView: UICollectionView,
-//                      layout collectionViewLayout: UICollectionViewLayout,
-//                      insetForSectionAt section: Int) -> UIEdgeInsets {
-//    return sectionInsets
-//  }
-//
-//  func collectionView(_ collectionView: UICollectionView,
-//                      layout collectionViewLayout: UICollectionViewLayout,
-//                      minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-//    return sectionInsets.left
-//  }
-//}
 
 //extension ResultViewController: UITableViewDataSource {
 //  func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -127,34 +123,5 @@ extension ResultViewController: UICollectionViewDataSource {
 //      rows = self.userSelectedCities!.count
 //    }
 //    return rows
-//  }
-//
-//  func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-//    let cell = tableView.dequeueReusableCell(withIdentifier: ResultTableViewCellIdentifier) as! CityChallengeResultTableViewCell
-//
-//    if challenge.challengeMode == "map" {
-//      let initialGeolocation = self.challenge.rounds[indexPath.row].initialGeoLocation
-//      let initialGeolocationCLLocation = CLLocation(latitude: initialGeolocation.latitude, longitude: initialGeolocation.longitude)
-//      let userSelectedCoordinateCLLocation = CLLocation(latitude: userSelectedCoordinates[indexPath.row].latitude, longitude: userSelectedCoordinates[indexPath.row].longitude)
-//      let distance = initialGeolocationCLLocation.distance(from: userSelectedCoordinateCLLocation)
-//      let distanceInKM = distance / 1000
-//      let roundedDistanceInKM = Double(round(100 * distanceInKM) / 100)
-//      cell.textLabel?.text = "Round \(indexPath.row): \(roundedDistanceInKM)"
-//    }
-//    if challenge.challengeMode == "multipleChoice" {
-//      let userSelectedCity = userSelectedCities![indexPath.row]
-//      let expectedAnswerIndex = challenge.rounds[indexPath.row].expectedAnswerIndex
-//      let expectedAnswer = challenge.rounds[indexPath.row].allOptions![expectedAnswerIndex!]
-//      if userSelectedCity == expectedAnswer {
-//        //cell.cityChallengeCellImageView.image = UIImage(named: "checkMark")
-//        cell.cityChallengeCellImageView.image = #imageLiteral(resourceName: "checkMark")
-//      } else {
-//        cell.cityChallengeCellImageView.image = #imageLiteral(resourceName: "crossMark")
-//      }
-//      cell.cityChallengeCellExpected.text = "Expected: \(expectedAnswer.cityName!) \(expectedAnswer.country!)"
-//      cell.cityChallengeCellUserAnswer.text = "Your Answer: \(userSelectedCity.cityName!) \(userSelectedCity.country!)"
-////      cell.cityChallengeCellUserAnswer.font
-//    }
-//    return cell
 //  }
 //}

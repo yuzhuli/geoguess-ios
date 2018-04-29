@@ -13,24 +13,65 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="cityChallengeResultCollectionViewCell" id="gTV-IL-0wX" customClass="CityChallengeResultCollectionViewCell" customModule="StreetView" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="197" height="191"/>
+            <rect key="frame" x="0.0" y="0.0" width="300" height="64"/>
             <autoresizingMask key="autoresizingMask"/>
             <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                <rect key="frame" x="0.0" y="0.0" width="197" height="191"/>
+                <rect key="frame" x="0.0" y="0.0" width="300" height="64"/>
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Lalala" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ACU-bR-lCs">
-                        <rect key="frame" x="65" y="75" width="45" height="21"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                        <nil key="textColor"/>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Boq-20-Wvb">
+                        <rect key="frame" x="28" y="22" width="20" height="20"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="20" id="S1k-5o-aj2"/>
+                            <constraint firstAttribute="height" constant="20" id="T9M-Al-vpp"/>
+                        </constraints>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Expected" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3K5-TI-u2K">
+                        <rect key="frame" x="64" y="11.5" width="220" height="17"/>
+                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="14"/>
+                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Your Answer" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Rbp-Zh-tHk">
+                        <rect key="frame" x="64" y="36" width="220" height="17"/>
+                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="14"/>
+                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZKg-wj-R2X">
+                        <rect key="frame" x="8" y="26" width="12" height="12"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="12" id="ISV-kq-9hu"/>
+                            <constraint firstAttribute="width" constant="12" id="PDq-7v-QE0"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="13"/>
+                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
                 </subviews>
             </view>
+            <color key="backgroundColor" red="0.83741801979999997" green="0.83743780850000005" blue="0.83742713930000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="3K5-TI-u2K" secondAttribute="trailing" constant="16" id="1kv-WI-A4S"/>
+                <constraint firstItem="3K5-TI-u2K" firstAttribute="leading" secondItem="Boq-20-Wvb" secondAttribute="trailing" constant="16" id="7Mc-pW-RAm"/>
+                <constraint firstItem="ZKg-wj-R2X" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="8" id="82g-3f-OhP"/>
+                <constraint firstItem="Rbp-Zh-tHk" firstAttribute="leading" secondItem="Boq-20-Wvb" secondAttribute="trailing" constant="16" id="B2p-R3-z4d"/>
+                <constraint firstItem="3K5-TI-u2K" firstAttribute="centerY" secondItem="gTV-IL-0wX" secondAttribute="centerY" constant="-12" id="PTU-L3-UL4"/>
+                <constraint firstItem="Rbp-Zh-tHk" firstAttribute="centerY" secondItem="gTV-IL-0wX" secondAttribute="centerY" constant="12" id="T4X-cb-3vl"/>
+                <constraint firstItem="ZKg-wj-R2X" firstAttribute="centerY" secondItem="gTV-IL-0wX" secondAttribute="centerY" id="WgY-iS-i3k"/>
+                <constraint firstItem="Boq-20-Wvb" firstAttribute="centerY" secondItem="gTV-IL-0wX" secondAttribute="centerY" id="ce3-Ow-6Xd"/>
+                <constraint firstItem="Boq-20-Wvb" firstAttribute="leading" secondItem="ZKg-wj-R2X" secondAttribute="trailing" constant="8" id="nNc-Di-Skk"/>
+                <constraint firstAttribute="trailing" secondItem="Rbp-Zh-tHk" secondAttribute="trailing" constant="16" id="p3W-Al-JyF"/>
+            </constraints>
             <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
             <size key="customSize" width="197" height="191"/>
-            <point key="canvasLocation" x="-48.5" y="122.5"/>
+            <connections>
+                <outlet property="expectedAnswer" destination="3K5-TI-u2K" id="CWd-cm-ezf"/>
+                <outlet property="markImage" destination="Boq-20-Wvb" id="xMG-Hl-NSQ"/>
+                <outlet property="roundNumber" destination="ZKg-wj-R2X" id="pic-Bt-6IC"/>
+                <outlet property="userSelectedAnswer" destination="Rbp-Zh-tHk" id="Z6R-5d-pdh"/>
+            </connections>
+            <point key="canvasLocation" x="-49" y="122"/>
         </collectionViewCell>
     </objects>
 </document>

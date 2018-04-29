@@ -11,4 +11,5 @@ target 'StreetView' do
   pod 'ObjectMapper', '~> 3.1'
   pod 'SwiftyJSON'
   pod 'LGButton'
+  pod 'Charts'
 end

@@ -1,4 +1,7 @@
 PODS:
+  - Charts (3.0.5):
+    - Charts/Core (= 3.0.5)
+  - Charts/Core (3.0.5)
   - GoogleMaps (2.5.0):
     - GoogleMaps/Maps (= 2.5.0)
   - GoogleMaps/Base (2.5.0)
@@ -11,6 +14,7 @@ PODS:
   - SwiftyJSON (4.0.0)
 
 DEPENDENCIES:
+  - Charts
   - GoogleMaps
   - GooglePlaces
   - LGButton
@@ -18,12 +22,13 @@ DEPENDENCIES:
   - SwiftyJSON
 
 SPEC CHECKSUMS:
+  Charts: 45cdc985b764c838b35ee47eb1365d15735f6d1a
   GoogleMaps: c087b8e5dfe87ca6ebf59adb9b4894a4146bec4f
   GooglePlaces: dd70d9d71ea1c7944846afe67de3712c99b30a77
   LGButton: 707ce916eb80b73a6c4688df34bee11adbafb663
   ObjectMapper: 20505058f54e5c3ca69e1d6de9897d152a5369a6
   SwiftyJSON: 070dabdcb1beb81b247c65ffa3a79dbbfb3b48aa
 
-PODFILE CHECKSUM: 397e9cdceefc107f01f58c6413abb7993b232d40
+PODFILE CHECKSUM: 90b6ef69ddf0f0e98b199a006934efcbf0f39ceb
 
 COCOAPODS: 1.4.0
