@@ -88,7 +88,13 @@ class ResultViewController: UIViewController {
     pieChartView.backgroundColor = UIColor.clear
     pieChartView.holeColor = UIColor.clear
     
-    pieChartView.centerText = "\(numOfCorrectAnswers)/\(total)"
+//    pieChartView.centerText = "\(numOfCorrectAnswers)/\(total)"
+    let myAttributes = [
+      NSAttributedStringKey.font: UIFont.systemFont(ofSize: 20, weight: UIFont.Weight.regular),
+      NSAttributedStringKey.foregroundColor: UIColor.white
+    ]
+    let myAttributedString = NSAttributedString(string: "\(numOfCorrectAnswers)/\(total)\nCorrect", attributes: myAttributes)
+    pieChartView.centerAttributedText = myAttributedString
     
     pieChartView.legend.enabled = false
     pieChartView.chartDescription?.enabled = false
