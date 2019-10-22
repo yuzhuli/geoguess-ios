@@ -90,3 +90,5 @@ DerivedData/
 *.xcbkptlist
 
 .DS_Store
+
+StreetView.xcodeproj/project.xcworkspace/xcshareddata/
