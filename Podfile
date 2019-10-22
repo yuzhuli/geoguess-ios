@@ -8,7 +8,7 @@ target 'StreetView' do
   # Pods for StreetView
   pod 'GoogleMaps'
   pod 'GooglePlaces'
-  pod 'ObjectMapper', '~> 3.1'
+  pod 'ObjectMapper'
   pod 'SwiftyJSON'
   pod 'LGButton'
   pod 'Charts'
