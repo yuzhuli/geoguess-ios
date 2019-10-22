@@ -36,6 +36,10 @@ class StreetViewController: UIViewController, GMSMapViewDelegate {
       latitude: initialGeoLocation.latitude,
       longitude: initialGeoLocation.longitude))
     setUpGuessButton()
+//    let panoView = GMSPanoramaView(frame: .zero)
+//    self.view = panoView
+//    panoView.delegate = self
+//    panoView.moveNearCoordinate(CLLocationCoordinate2D(latitude: 37.3317134, longitude: -122.0307466))
   }
   
   weak var delegate: StreetViewControllerDelegate?
@@ -43,7 +47,7 @@ class StreetViewController: UIViewController, GMSMapViewDelegate {
   private func setUpGuessButton() {
     guessButton = UIButton(frame: CGRect(
       x: view.frame.size.width / 2 - 100,
-      y: view.frame.size.height - 48,
+      y: view.frame.size.height - 88,
       width: 224,
       height: 24))
     guessButton.layer.cornerRadius = 10
@@ -68,3 +72,9 @@ class StreetViewController: UIViewController, GMSMapViewDelegate {
   private let initialGeoLocation: CLLocationCoordinate2D
 }
 
+
+extension StreetViewController: GMSPanoramaViewDelegate {
+    func panoramaView(_ view: GMSPanoramaView, error: Error, onMoveNearCoordinate coordinate: CLLocationCoordinate2D) {
+        print(error.localizedDescription)
+    }
+}

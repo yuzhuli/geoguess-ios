@@ -1,11 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
-    <device id="retina4_7" orientation="portrait">
-        <adaptation id="fullscreen"/>
-    </device>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15400" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15404"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -19,32 +17,12 @@
         <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
             <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <userGuides>
+                <userLayoutGuide location="187" affinity="minX"/>
+            </userGuides>
             <subviews>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dCI-qR-blb" customClass="LGButton" customModule="LGButton">
-                    <rect key="frame" x="67" y="483" width="240" height="40"/>
-                    <color key="backgroundColor" red="0.0" green="0.56904578210000001" blue="0.57461684940000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="40" id="Wmg-q8-12g"/>
-                        <constraint firstAttribute="width" constant="240" id="eC0-Jt-E20"/>
-                    </constraints>
-                    <userDefinedRuntimeAttributes>
-                        <userDefinedRuntimeAttribute type="color" keyPath="bgColor">
-                            <color key="value" red="0.0" green="0.56904578210000001" blue="0.57461684940000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        </userDefinedRuntimeAttribute>
-                        <userDefinedRuntimeAttribute type="boolean" keyPath="showTouchFeedback" value="YES"/>
-                        <userDefinedRuntimeAttribute type="string" keyPath="titleString" value="Map Challenge"/>
-                        <userDefinedRuntimeAttribute type="color" keyPath="titleColor">
-                            <color key="value" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        </userDefinedRuntimeAttribute>
-                        <userDefinedRuntimeAttribute type="boolean" keyPath="fullyRoundedCorners" value="YES"/>
-                    </userDefinedRuntimeAttributes>
-                    <connections>
-                        <action selector="onStartMapGameButtonPressed:" destination="-1" eventType="valueChanged" id="E7i-9y-UFX"/>
-                        <action selector="onStartMapGameButtonPressed:" destination="-1" eventType="touchUpInside" id="rOd-6V-r83"/>
-                    </connections>
-                </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xNI-JL-dHS" customClass="LGButton" customModule="LGButton">
-                    <rect key="frame" x="67" y="555" width="240" height="40"/>
+                    <rect key="frame" x="67.5" y="557" width="240" height="40"/>
                     <color key="backgroundColor" red="0.0" green="0.56904578210000001" blue="0.57461684940000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="40" id="SYy-O9-PS9"/>
@@ -66,13 +44,39 @@
                         <action selector="onCityChallengeButtonPressed:" destination="-1" eventType="touchUpInside" id="Efr-em-mB2"/>
                     </connections>
                 </view>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dCI-qR-blb" customClass="LGButton" customModule="LGButton">
+                    <rect key="frame" x="67.5" y="350" width="240" height="40"/>
+                    <color key="backgroundColor" red="0.0" green="0.56904578210000001" blue="0.57461684940000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="40" id="Wmg-q8-12g"/>
+                        <constraint firstAttribute="width" constant="240" id="eC0-Jt-E20"/>
+                    </constraints>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="color" keyPath="bgColor">
+                            <color key="value" systemColor="systemTealColor" red="0.35294117650000001" green="0.7843137255" blue="0.98039215690000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="boolean" keyPath="showTouchFeedback" value="YES"/>
+                        <userDefinedRuntimeAttribute type="string" keyPath="titleString" value="Map Challenge"/>
+                        <userDefinedRuntimeAttribute type="color" keyPath="titleColor">
+                            <color key="value" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="boolean" keyPath="fullyRoundedCorners" value="YES"/>
+                        <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                            <color key="value" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
+                    <connections>
+                        <action selector="onStartMapGameButtonPressed:" destination="-1" eventType="valueChanged" id="E7i-9y-UFX"/>
+                        <action selector="onStartMapGameButtonPressed:" destination="-1" eventType="touchUpInside" id="rOd-6V-r83"/>
+                    </connections>
+                </view>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
+                <constraint firstItem="xNI-JL-dHS" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="bottom" constant="-110" id="01E-TC-RBa"/>
+                <constraint firstItem="xNI-JL-dHS" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="0YU-DX-AiX"/>
                 <constraint firstItem="dCI-qR-blb" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="AS0-1U-Vgc"/>
-                <constraint firstItem="xNI-JL-dHS" firstAttribute="top" secondItem="dCI-qR-blb" secondAttribute="bottom" constant="32" id="Vkr-Ig-dxv"/>
-                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="xNI-JL-dHS" secondAttribute="bottom" constant="72" id="YdT-BP-WXC"/>
-                <constraint firstItem="xNI-JL-dHS" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="u4k-EY-mfg"/>
+                <constraint firstItem="dCI-qR-blb" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="350" id="KsX-ks-lm5"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <point key="canvasLocation" x="26.5" y="51.5"/>

@@ -18,8 +18,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
     // Override point for customization after application launch.
-    GMSServices.provideAPIKey("AIzaSyBMa8lKxFvmiXi2fpBYrCzHbxxj5tsyTe8")
-    GMSPlacesClient.provideAPIKey("AIzaSyBMa8lKxFvmiXi2fpBYrCzHbxxj5tsyTe8")
+    GMSServices.provideAPIKey("AIzaSyB0sGc_RAVT-4UQvqNHhTUA0KRNoOrNxAc")
+    GMSPlacesClient.provideAPIKey("AIzaSyB0sGc_RAVT-4UQvqNHhTUA0KRNoOrNxAc")
   
     window = UIWindow(frame: UIScreen.main.bounds)
     let modeSelectionCoordinator = ModeSelectionCoordinator(window: window!)
