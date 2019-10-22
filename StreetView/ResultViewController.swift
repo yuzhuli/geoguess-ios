@@ -73,7 +73,7 @@ class ResultViewController: UIViewController {
     let total = numOfWrongAnswers + numOfCorrectAnswers
     let entry1 = PieChartDataEntry(value: Double(numOfCorrectAnswers), label: "Correct")
     let entry2 = PieChartDataEntry(value: Double(numOfWrongAnswers), label: "Wrong")
-    let dataSet = PieChartDataSet(values: [entry1, entry2], label: nil)
+    let dataSet = PieChartDataSet(entries: [entry1, entry2], label: nil)
     let data = PieChartData(dataSet: dataSet)
     pieChartView.data = data
     
@@ -89,8 +89,8 @@ class ResultViewController: UIViewController {
     pieChartView.holeColor = UIColor.clear
     
     let myAttributes = [
-      NSAttributedStringKey.font: UIFont.systemFont(ofSize: 20, weight: UIFont.Weight.regular),
-      NSAttributedStringKey.foregroundColor: UIColor.white
+        NSAttributedString.Key.font: UIFont.systemFont(ofSize: 20, weight: UIFont.Weight.regular),
+        NSAttributedString.Key.foregroundColor: UIColor.white
     ]
     let myAttributedString = NSAttributedString(string: "\(numOfCorrectAnswers)/\(total)\nCorrect", attributes: myAttributes)
     pieChartView.centerAttributedText = myAttributedString

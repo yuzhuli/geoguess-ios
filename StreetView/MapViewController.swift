@@ -63,7 +63,7 @@ class MapViewController: UIViewController {
       action: #selector(MapViewController.onConfirmButtonPressed(_:)),
       for: .touchUpInside)
     view.addSubview(confirmButton)
-    view.bringSubview(toFront: confirmButton)
+    view.bringSubviewToFront(confirmButton)
   }
   
   private func setUpCancelButton() {
@@ -85,7 +85,7 @@ class MapViewController: UIViewController {
       action: #selector(MapViewController.onCancelButtonPressed(_:)),
       for: .touchUpInside)
     view.addSubview(cancelButton)
-    view.bringSubview(toFront: cancelButton)
+    view.bringSubviewToFront(cancelButton)
   }
   
   private func setUpNextRoundButton() {
@@ -104,7 +104,7 @@ class MapViewController: UIViewController {
       action: #selector(MapViewController.onNextRoundButtonPressed(_:)),
       for: .touchUpInside)
     view.addSubview(nextRoundButton)
-    view.bringSubview(toFront: nextRoundButton)
+    view.bringSubviewToFront(nextRoundButton)
   }
   
   private func addExpectedMarker() {

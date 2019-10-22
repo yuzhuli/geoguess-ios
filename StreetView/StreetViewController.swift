@@ -56,7 +56,7 @@ class StreetViewController: UIViewController, GMSMapViewDelegate {
       action: #selector(StreetViewController.onGuessButtonPressed(_:)),
       for: .touchUpInside)
     view.addSubview(guessButton)
-    view.bringSubview(toFront: guessButton)
+    view.bringSubviewToFront(guessButton)
   }
   
   @objc private func onGuessButtonPressed(_ sender: UIButton!) {
